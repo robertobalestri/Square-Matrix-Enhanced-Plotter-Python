@@ -1,0 +1,6 @@
+__pycache__/
+.venv/
+*.pyc
+Square_Matrix_Enhanced_Plotter.egg-info/
+build/
+dist/
