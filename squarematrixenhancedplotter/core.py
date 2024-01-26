@@ -170,7 +170,7 @@ class SquareMatrix:
         self.ax.set_xlim(new_xlim)
         self.ax.set_ylim(new_ylim)
 
-        self.on_resize(None)  # Update the colorbar after zooming
+        #self.on_resize(None)  # Update the colorbar after zooming
         
         self.fig.canvas.draw_idle()
 
@@ -188,15 +188,13 @@ class SquareMatrix:
 
     def on_dragging(self, event):
         if self.press is None or not self.dragging:
-            #self.on_resize(None)  
-            print('Not dragging')
+            self.on_resize(None)  
             return
 
         if event.inaxes != self.ax or event.xdata is None or event.ydata is None:
             self.dragging = False
             self.press = None
-            print('Out of bounds')
-            #self.on_release(event) 
+            self.on_release(event) 
             return
 
         x_press, y_press = self.press
@@ -293,25 +291,26 @@ class SquareMatrix:
         plt.show()
         
     def on_resize(self, event):
+        pass
         """Recreates the colorbar to match the current plot."""
-        if hasattr(self, 'cbar')  and self.cbar:
+        #if hasattr(self, 'cbar')  and self.cbar:
             
-            try:
-                self.cbar.remove()
-            except KeyError:
-                pass
+            #try:
+            #    self.cbar.remove()
+            #except KeyError:
+            #    pass
 
-        divider = make_axes_locatable(self.ax)
-        cax = divider.append_axes("right", size="5%", pad=0.05)
-        self.cbar = plt.colorbar(self.cax, cax=cax)
+        #divider = make_axes_locatable(self.ax)
+        #cax = divider.append_axes("right", size="5%", pad=0.05)
+        #self.cbar = plt.colorbar(self.cax, cax=cax)
 
 def plot_matrix(matrix, title):
     fig, ax = plt.subplots(figsize=(5, 5))
     zoomable_matrix = SquareMatrix(matrix, title, ax=ax)
     
-    divider = make_axes_locatable(ax)
-    cax = divider.append_axes("right", size="2%", pad=0.05)
-    zoomable_matrix.cbar = plt.colorbar(zoomable_matrix.cax, cax=cax)  # Store the colorbar
+    #divider = make_axes_locatable(ax)
+    #cax = divider.append_axes("right", size="2%", pad=0.05)
+    #zoomable_matrix.cbar = plt.colorbar(zoomable_matrix.cax, cax=cax)  # Store the colorbar
 
     plt.show()
 
@@ -324,9 +323,9 @@ def plot_matrices_side_by_side(*matrices, titles=None):
 
     for ax, matrix, title in zip(axes, matrices, titles):
         zoomable_matrix = SquareMatrix(matrix, title, ax=ax)
-        divider = make_axes_locatable(ax)
-        cax = divider.append_axes("right", size="2%", pad=0.05)
-        zoomable_matrix.cbar = plt.colorbar(zoomable_matrix.cax, cax=cax)  # Store the colorbar
+        #divider = make_axes_locatable(ax)
+        #cax = divider.append_axes("right", size="2%", pad=0.05)
+        #zoomable_matrix.cbar = plt.colorbar(zoomable_matrix.cax, cax=cax)  # Store the colorbar
 
 
 
