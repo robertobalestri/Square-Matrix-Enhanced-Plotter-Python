@@ -112,10 +112,10 @@ class SquareMatrix:
         self.ax.tick_params(axis='both', which='minor', length=5)
 
         # Enable grid only for minor ticks, offset by 0.5
-        self.ax.grid(True, which='minor', axis='both', linestyle='-', linewidth=0.2)
+        #self.ax.grid(True, which='minor', axis='both', linestyle='-', linewidth=0.2)
 
         # Optionally, turn off major grid lines
-        self.ax.grid(False, which='major')
+        #self.ax.grid(False, which='major')
     
     def request_update_tick_labels(self):
         self.update_needed = True
@@ -188,13 +188,15 @@ class SquareMatrix:
 
     def on_dragging(self, event):
         if self.press is None or not self.dragging:
-            self.on_resize(None)  
+            #self.on_resize(None)  
+            print('Not dragging')
             return
 
         if event.inaxes != self.ax or event.xdata is None or event.ydata is None:
             self.dragging = False
             self.press = None
-            self.on_release(event) 
+            print('Out of bounds')
+            #self.on_release(event) 
             return
 
         x_press, y_press = self.press
