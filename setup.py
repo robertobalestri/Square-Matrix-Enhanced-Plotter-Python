@@ -9,7 +9,7 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     keywords='matrix square matplotlib plot zoom interaction',
-    url="https://github.com/robertobalestri/SquareMatrixEnhancedPlotter",
+    url="https://github.com/robertobalestri/Square-Matrix-Enhanced-Plotter-Python",
     packages=find_packages(),
     install_requires=[
         "matplotlib",
