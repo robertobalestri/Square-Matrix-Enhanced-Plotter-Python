@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='square_matrix_enhanced_plotter',
-    version="0.1.2",
+    version="0.1.3",
     author="Roberto Balestri",
     author_email="roberto.balestri2@unibo.it",
     description="A Python package for enhanced plotting of square matrices with zoom and interaction capabilities.",
