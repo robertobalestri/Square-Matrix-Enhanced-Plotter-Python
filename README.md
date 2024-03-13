@@ -13,7 +13,7 @@ Square Matrix Enhanced Plotter is a Python package for interactive and enhanced 
 You can install Square Matrix Enhanced Plotter using pip:
 
 ```bash
-pip install SquareMatrixEnhancedPlotter
+pip install square-matrix-enhanced-plotter
 ```
 
 ## Usage
