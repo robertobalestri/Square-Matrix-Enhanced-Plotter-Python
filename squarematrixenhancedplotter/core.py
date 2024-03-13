@@ -331,3 +331,37 @@ def plot_matrices_side_by_side(*matrices, titles=None):
 
     plt.tight_layout()
     plt.show()
+    
+def plot_matrices_in_grid(matrices, titles=None, row_max=3, hspace=0.01):
+    n_matrices = len(matrices)
+    
+    nrows = (n_matrices + row_max - 1) // row_max
+    ncols = min(n_matrices, row_max)
+    
+    # Adjust figsize here, you might need to experiment with these values
+    fig, axes = plt.subplots(nrows, ncols, figsize=(5 * ncols, 3 * nrows))
+    
+    if titles is None:
+        titles = ['Matrix {}'.format(i + 1) for i in range(n_matrices)]
+
+    if nrows > 1:
+        axes = axes.flatten()
+
+    for i, (matrix, title) in enumerate(zip(matrices, titles)):
+        if nrows == 1:
+            ax = axes[i]
+        else:
+            ax = axes[i] if i < len(axes) else fig.add_subplot(nrows, ncols, i + 1)
+        
+        SquareMatrix(matrix, title, ax=ax)
+
+    for j in range(i + 1, nrows * ncols):
+        fig.delaxes(axes[j])
+
+    # Comment out tight_layout if it interferes with subplots_adjust
+    # plt.tight_layout()
+
+    # Adjust the height space between rows
+    plt.subplots_adjust(hspace=hspace)
+    
+    plt.show()
